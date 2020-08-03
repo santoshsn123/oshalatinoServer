@@ -24,7 +24,10 @@ const port = process.env.PORT || 8080;
 
 const app = express();
 const connection = connect();
+const bodyParser = require("body-parser");
 
+app.use(bodyParser.json());
+app.use(express.static(process.cwd()+"/public/oshalatinoClient/"));
 /**
  * Expose dig @161.97.93.202 +nssearch domain.com
  */

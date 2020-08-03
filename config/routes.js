@@ -1,6 +1,6 @@
 "use strict";
 const path = require("path");
-
+const express = require("express");
 /**
  * Module dependencies.
  */
@@ -67,11 +67,15 @@ module.exports = function(app) {
     res.status(500).render("500", { error: err.stack });
   });
 
+  // app.get('/', (req,res) => {
+  //   res.sendFile(process.cwd()+"/public/oshalatinoClient/")
+  // });
   // assume 404 since no middleware responded
   app.use(function(req, res) {
-    res.status(404).render("404", {
-      url: req.originalUrl,
-      error: "Not found"
-    });
+    res.sendFile(process.cwd()+"/public/oshalatinoClient/")
+    // res.status(404).render("404", {
+    //   url: req.originalUrl,
+    //   error: "Not found"
+    // });
   });
 };
