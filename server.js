@@ -25,6 +25,16 @@ const port = process.env.PORT || 8080;
 const app = express();
 const connection = connect();
 const bodyParser = require("body-parser");
+const https = require('https');
+const https_options = {
+  key: fs.readFileSync('./config/cert/key.pem', 'utf8'),
+  cert: fs.readFileSync('./config/cert/server.crt', 'utf8')
+  // key: fs.readFileSync("config/cert/generated-private.key"),
+
+  // cert: fs.readFileSync("config/cert/generated-csr.crt"),
+
+  // ca: [fs.readFileSync('./config/cert/bundle/9a862187b82fcb.crt'),fs.readFileSync('./config/cert/bundle/gd_bundle-g2-g1.crt')]
+};
 
 app.use(bodyParser.json());
 app.use(express.static(process.cwd()+"/public/oshalatinoClient/"));
@@ -54,8 +64,17 @@ connection
 
 function listen() {
   if (app.get("env") === "test") return;
-  app.listen(port);
-  console.log("Express app started on port " + port);
+  // app.listen(port);
+  // console.log("Express app started on port " + port);
+  console.log("Before start");
+  https.createServer(https_options, function (req, res) {
+console.log("Started")
+    res.writeHead(200);
+   
+    res.end("Welcome to Node.js HTTPS Servern");
+   
+   }).listen(port);
+   console.log("Here");
 }
 
 function connect() {
