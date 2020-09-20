@@ -17,6 +17,7 @@ const vender = require("../app/controllers/vender");
 module.exports = function(app) {
   app.get("/uploaded-image/:id", (req, res) => {
     let name = req.params.id; //req.param;
+    console.log('File uploading :- ',name);
     // console.log("Data :- ", name, path.join(__dirname, "../upload/" + name));
     res.sendFile(path.join(__dirname, "../upload/" + name));
   });

@@ -58,6 +58,7 @@ exports.deleteBanner = (req, res) => {
 };
 
 var uploadImage = (prefix, File) => {
+  console.log('File names before Upoload',prefix, File)
   return new Promise((resolve, reject) => {
     let name = File.name;
     let fileName = prefix + "." + name.split(".")[name.split(".").length - 1];
