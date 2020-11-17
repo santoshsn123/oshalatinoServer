@@ -9,6 +9,7 @@ const home = require("../app/controllers/home");
 const trade = require("../app/controllers/trade");
 const banner = require("../app/controllers/banner");
 const vender = require("../app/controllers/vender");
+const course = require('../app/controllers/course');
 
 /**
  * Expose
@@ -28,6 +29,15 @@ module.exports = function(app) {
   // app.post("/login", home.login);
 
   app.post("/api/v1/admin/login", home.login);
+
+
+  /**Course API Here*/
+  app.post('/api/v1/course', course.createCourse);
+  app.get('/api/v1/course', course.getAllCourses);
+  app.get('/api/v1/course/:id', course.getCourseById);
+  app.put('/api/v1/course/:id', course.updateCourse);
+  app.delete('/api/v1/course/:id', course.deleteCourse);
+  /**Course API Done Here*/
 
   /**Trade API Here*/
   app.post("/api/v1/trade", trade.createTrade);
