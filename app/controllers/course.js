@@ -13,24 +13,24 @@ exports.createCourse = (req, res) => {
   course.save();
   if (req.files) {
     uploadImage(imageBaseName + course._id, req.files.image).then(image => {
-      Course.update({ _id: course._id }, { courseImage: image }).then(done => {
+      Course.updateOne({ _id: course._id }, { courseImage: image }).then(done => {
         return res.send(done);
       });
     });
   }
-  {
+  else{
     return res.send({ status: true });
   }
   // return res.send(course);
 };
 exports.updateCourse = (req, res) => {
   let id = req.params.id;
-  Course.update({ _id: id }, req.body).then(data => {
+  Course.updateOne({ _id: id }, req.body).then(data => {
     if (req.files) {
       Course.findOne({ _id: id }).then(course => {
         deleteFile(course.courseImage).then(done => {
           uploadImage(imageBaseName + id, req.files ? req.files.image : null).then(image => {
-            Course.update({ _id: id }, { courseImage: image }).then(done => {
+            Course.updateOne({ _id: id }, { courseImage: image }).then(done => {
               return res.send(done);
             });
           });

@@ -24,7 +24,7 @@ exports.getOneTrades = (req, res) => {
 
 exports.updateTrades = (req, res) => {
   let id = req.params.id;
-  Trade.update({ _id: id }, req.body).then(data => {
+  Trade.updateOne({ _id: id }, req.body).then(data => {
     return res.send(data);
   });
 };

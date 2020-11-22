@@ -9,7 +9,7 @@ exports.createBanner = (req, res) => {
   banne._id;
 
   uploadImage(imageBaseName + banne._id, req.files.image).then(image => {
-    Banner.update({ _id: banne._id }, { bannerImage: image }).then(done => {
+    Banner.updateOne({ _id: banne._id }, { bannerImage: image }).then(done => {
       res.send(done);
     });
   });
