@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 const Course = require('../models/course');
+const CourseUser = require('../models/courseUser');
 const imageBaseName = "courseImage_";
 const fs = require('fs')
 /*!
@@ -67,6 +68,28 @@ exports.deleteCourse = (req, res) => {
   });
 };
 
+
+//CourseUser Functionality here:- 
+exports.courseregister = (req,res) =>{
+  const user = new CourseUser(req.body);
+  user.save();
+  return res.send(user);
+}
+
+exports.getCourseUsers = (req,res) =>{
+  CourseUser.find().sort({_id:-1}).populate('courseId').then(data=>{
+    // console.log(data);
+    return res.send(data);
+  })
+}
+
+exports.deleteCourseUser = (req,res) =>{
+  CourseUser.deleteOne({_id:req.params.id}).then(data=>{
+    return res.send(data);
+  })
+}
+
+//Extrafunctions 
 var deleteFile = fileName => {
   return new Promise((resolve, reject) => {
     if (fileName) {
@@ -83,7 +106,6 @@ var deleteFile = fileName => {
     else {
       resolve('done')
     }
-
   });
 }
 var uploadImage = (prefix, File) => {

@@ -37,6 +37,11 @@ module.exports = function(app) {
   app.get('/api/v1/course/:id', course.getCourseById);
   app.put('/api/v1/course/:id', course.updateCourse);
   app.delete('/api/v1/course/:id', course.deleteCourse);
+
+  app.post('/api/v1/courseregister', course.courseregister);
+  app.get('/api/v1/courseregister', course.getCourseUsers);
+  app.delete('/api/v1/courseregister/:id', course.deleteCourseUser);
+  
   /**Course API Done Here*/
 
   /**Trade API Here*/
