@@ -8,7 +8,7 @@ exports.createTrade = (req, res) => {
 
 exports.getAllTrades = (req, res) => {
   Trade.find()
-    .sort({ _id: -1 })
+    .sort({ tradeTitle: 1 })
     // ._addSpecial("$orderby", { _id: -1 })
     .then(data => {
       res.send(data);
