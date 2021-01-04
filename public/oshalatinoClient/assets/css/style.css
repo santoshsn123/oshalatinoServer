@@ -18664,7 +18664,7 @@ html {
 }
 
 .container-scroller {
-  overflow: hidden;
+  overflow: scroll;
 }
 
 pre {
@@ -21322,7 +21322,7 @@ dl li {
 }
 
 /* style for off-canvas menu*/
-@media screen and (max-width: 991px) {
+/* @media screen and (max-width: 991px) {
   .sidebar-offcanvas {
     position: fixed;
     max-height: calc(100vh - 60px);
@@ -21337,7 +21337,7 @@ dl li {
   .sidebar-offcanvas.active {
     right: 0;
   }
-}
+} */
 
 /* Navbar */
 .navbar {
