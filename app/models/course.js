@@ -12,6 +12,8 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   courseName: { type: String, default: '' },
   description: { type: String, default: '' },
+  courseName_sp: { type: String, default: '' },
+  description_sp: { type: String, default: '' },
   // hashed_password: { type: String, default: "" },
   price: { type: String, default: '' },
   courseImage: { type: String, default: '' }
