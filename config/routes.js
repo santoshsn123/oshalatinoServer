@@ -31,6 +31,9 @@ module.exports = function(app) {
 
   app.post("/api/v1/admin/login", home.login);
 
+  app.put("/api/v1/info", home.updateInfo);
+  app.get("/api/v1/info", home.getInfo);
+
 
   /**Course API Here*/
   app.post('/api/v1/course', course.createCourse);

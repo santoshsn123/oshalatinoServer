@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 const User = require("../models/user");
+const Info = require("../models/info");
 const md5 = require("md5");
 
 /*!
@@ -29,6 +30,21 @@ exports.login = (req, res) => {
   });
   // res.send("Login Here ");
 };
+exports.getInfo = function(req,res){
+  Info.findOne()
+  // .sort({ _id: -1 })
+  .then(data => {
+    res.send(data);
+  });
+}
+exports.updateInfo = function(req,res){
+  console.log(req.body);
+  Info.remove().then(done=>{
+    let info = new Info(req.body);
+    info.save();
+    return res.status(200).jsonp({status:true});
+  })
+}
 exports.index = function(req, res) {
   // let user = new User({
   //   name: "santosh",
