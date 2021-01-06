@@ -10,6 +10,7 @@ const trade = require("../app/controllers/trade");
 const banner = require("../app/controllers/banner");
 const vender = require("../app/controllers/vender");
 const course = require('../app/controllers/course');
+const cms = require('../app/controllers/cms');
 
 /**
  * Expose
@@ -52,6 +53,15 @@ module.exports = function(app) {
   app.delete("/api/v1/trade/:id", trade.deleteTrade);
   /**Trade API Done Here*/
 
+  /**CMS API Here*/
+  app.post("/api/v1/cms", cms.createCMS);
+  app.get("/api/v1/cms", cms.getAllCMS);
+  app.get("/api/v1/cms/:id", cms.getOneCMS);
+  app.put("/api/v1/cms/:id", cms.updateCMS);
+  app.delete("/api/v1/cms/:id", cms.deleteCMS);
+  /**CMS API Done Here*/
+
+  
   /**Banner API Here*/
   app.post("/api/v1/banner", banner.createBanner);
   app.get("/api/v1/banner", banner.getAllBanner);
